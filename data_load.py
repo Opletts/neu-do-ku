@@ -1,12 +1,11 @@
 import csv
 import torch
 import numpy as np
-from torch.autograd import Variable
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import Dataset
 
 class Sudoku(Dataset):
 	def __init__(self):
-		with open("sudoku.csv", "rb") as f:
+		with open("test.csv", "rb") as f:
 			reader = csv.reader(f, delimiter=",")
 			data = [[] for i in range(2)]
 			for i, line in enumerate(reader):
@@ -24,8 +23,3 @@ class Sudoku(Dataset):
 
 	def __len__(self):
 		return self.length
-
-# data = Sudoku()
-# train_load = DataLoader(dataset=data, batch_size=4, shuffle=True)
-# dataiter = iter(train_load)
-# real, label = dataiter.next()
