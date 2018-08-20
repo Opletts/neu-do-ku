@@ -5,7 +5,7 @@ from torch.utils.data import Dataset
 
 class Sudoku(Dataset):
 	def __init__(self):
-		with open("test.csv", "rb") as f:
+		with open("sudoku.csv", "rb") as f:
 			reader = csv.reader(f, delimiter=",")
 			data = [[] for i in range(2)]
 			for i, line in enumerate(reader):
@@ -14,7 +14,7 @@ class Sudoku(Dataset):
 				data[0].append(grid)
 				data[1].append(solve)
 
-		self.length = len(data[0])		
+		self.length = len(data[0])
 		self.x_data = torch.Tensor(data[0])
 		self.y_data = torch.Tensor(data[1])
 
